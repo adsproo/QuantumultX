@@ -5,6 +5,7 @@
 转载请备注个名字，谢谢
 
 11.25 增加 阅读时长上传，阅读金币，阅读随机金币
+11.25 修复翻倍宝箱不同时领取的问题
 
 
 ⚠️cookie获取方法：
@@ -17,7 +18,7 @@
 
 
 
-⚠️宝箱奖励为20分钟一次，自己根据情况设置定时
+⚠️宝箱奖励为20分钟一次，自己根据情况设置定时，建议设置11分钟一次
 
 hostname=mqqapi.reader.qq.com
 
@@ -114,13 +115,6 @@ const qqreadtimebodyVal = ''
 
 
 
-const qqreadconfigurlKey = +jbid
-const qqreadconfigurlVal = $.getdata(qqreadconfigurlKey)
-
-
-
-
-
 
 
 
@@ -182,12 +176,6 @@ $.msg(qqreadtimeurlKey, `获取阅读时长cookie: 成功🎉`, ``)
 }
 
 
-
-
-
-  
-
-
 }
 
 
@@ -207,7 +195,6 @@ else if  (i==1)qqreadtime();
 else if (i==2)qqreadtask()
 
 
-
 else if (i==3&&task.data.treasureBox.doneFlag==0)
 qqreadbox();
 
@@ -215,35 +202,28 @@ else if (i==4&&task.data.taskList[0].doneFlag==0)
 qqreadtake();
 
 
-
-
 else if (i==5&&task.data.taskList[1].doneFlag==0)
 qqreaddayread();
-
-
-
 
 
 else if (i==6&&task.data.taskList[3].doneFlag==0)
 qqreadvideo();
 
 
-
-else if (i==7&&task.data.treasureBox.videoDoneFlag==0)
-qqreadbox2();
-
-
-else if (i==8)
+else if (i==7)
 qqreadsign();
 
 
-
-else if (i==9)
+else if (i==8)
 qqreadconfig();
 
 
-else if (i==10&&sign.data.videoDoneFlag==0)
+else if (i==9&&sign.data.videoDoneFlag==0)
 qqreadsign2();
+
+
+else if (i==10&&task.data.treasureBox.videoDoneFlag==0)
+qqreadbox2();
 
 
 
@@ -252,12 +232,8 @@ else if (i==11) showmsg()
  }
 
 
-
 , (i + 1) *dd*100);
                 })(i)
-
-
-
 
 
 
@@ -297,26 +273,12 @@ tz+=
 
 
 
-
-
-
-
 resolve()
 
     })
 
    })
   }  
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -443,11 +405,7 @@ return new Promise((resolve, reject) => {
    
 tz+='【时长查询】:今日阅读'+(config.data.pageParams.todayReadSeconds/60).toFixed(0)+'分钟\n'
 
-
-
-
 if (task.data.taskList[2].doneFlag==0){
-
 
 
 for(let i=0;i<config.data.pageParams.readTimeRewardTask.length;i++)
@@ -482,12 +440,6 @@ tz+=
  },i*dd*20)}
 
 
-
-
-
-
-
-
 for(let i=0;i<config.data.pageParams.readTimeTask.length;i++)
  {
 	setTimeout(()=>{	 
@@ -510,7 +462,6 @@ tz+=
 
 
      
-
 })			
     
 
@@ -529,52 +480,6 @@ tz+=
 
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//阅读金币
-function qqreadssr() {
-return new Promise((resolve, reject) => {
-
-  const toqqreadssrurl = {
-
-    url: 'https://mqqapi.reader.qq.com/mqq/red_packet/user/read_time?seconds=30',
-
-    headers: JSON.parse(qqreadheaderVal),
-    
- timeout:60000};
-   $.get(toqqreadssrurl,(error, response, data) =>{
-     if(logs) $.log(`${jsname}, 用户名: ${data}`)
-     ssr =JSON.parse(data)
-tz+=
-'【阅读金币】获得:'+ssr.data.amount+'金币\n'
-
-
-
-    
-
-
-resolve()
-    })
-   })
-  }  
 
 
 
