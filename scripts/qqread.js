@@ -9,6 +9,8 @@
 11.25 修复阅读时长问题，阅读金币问题，请重新获取时长cookie
 11.26 随机金币只有一次，故去除，调整修复阅读金币问题，增加时长上传限制
 11.26 增加领取周时长奖励
+11.26 增加结束命令
+11.27 调整通知为，成功开启宝箱再通知
 
 
 ⚠️cookie获取方法：
@@ -237,13 +239,11 @@ qqreadwktime();//周时长查询
 else if (i==15)
 qqreadpick();//领周时长奖励
 
-
-
-
-
+else if (i==16)
+showmsg();//通知
 
 else if (i==17)
-showmsg();//通知
+$.done();//结束
 
  }
 
@@ -812,6 +812,9 @@ tz+='【周时长奖励'+(i+1)+'】:领取'+Packageid[i]+'阅豆\n'
 
 function showmsg() {
 
+	
+console.log(tz)
+	
 if (notifyInterval==1)
 $.msg(jsname,'',tz)//显示所有通知
 
