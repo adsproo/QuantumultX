@@ -11,8 +11,8 @@
 【Loon】 :
 *************************
 [Script]
-cron "10 23 8 * * *" script-path=https://raw.githubusercontent.com/Sliverkiss/helloworld/master/Study/syns.js, timeout=300, tag=所有女生会员服务中心
-http-request ^https:\/\/7\.wawo\.cc\/api\/account\/wx\/member\/assets script-path=https://raw.githubusercontent.com/Sliverkiss/helloworld/master/Study/syns.js, timeout=10, tag=所有女生会员服务中心获取token
+cron "10 23 8 * * *" script-path=https://raw.githubusercontent.com/adsproo/QuantumultX/master/syns.js, timeout=300, tag=所有女生会员服务中心
+http-request ^https:\/\/7\.wawo\.cc\/api\/account\/wx\/member\/assets script-path=https://raw.githubusercontent.com/adsproo/QuantumultX/master/syns.js, timeout=10, tag=所有女生会员服务中心获取token
 
 [MITM]
 hostname =7.wawo.cc
